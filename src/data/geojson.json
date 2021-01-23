@@ -1,0 +1,154 @@
+[
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-113.97319, 51.097466]
+    },
+    "properties": {
+      "price": 199999,
+      "bedrooms": 2,
+      "bathrooms": 1,
+      "address": {
+        "street": "123 Bob St",
+        "city": "Calgary",
+        "province": "Alberta",
+        "postal": "T4C 9X9",
+        "country": "Canada"
+      }
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-114.158737, 51.141126]
+    },
+    "properties": {
+      "price": 239000,
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "address": {
+        "street": "1656 40th St NW",
+        "city": "Calgary",
+        "province": "Alberta",
+        "postal": "T4C 8B7",
+        "country": "Canada"
+      }
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-113.9677, 51.09572]
+    },
+    "properties": {
+      "price": 479000,
+      "bedrooms": 4,
+      "bathrooms": 2,
+      "address": {
+        "street": "1656 Golden St NE",
+        "city": "Calgary",
+        "province": "Alberta",
+        "postal": "T4C 9V6",
+        "country": "Canada"
+      }
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-114.199042, 51.040987]
+    },
+    "properties": {
+      "price": 319000,
+      "bedrooms": 3,
+      "bathrooms": 1,
+      "address": {
+        "street": "16 Bear St SW",
+        "city": "Calgary",
+        "province": "Alberta",
+        "postal": "T4C 7C2",
+        "country": "Canada"
+      }
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-114.048483, 50.955151]
+    },
+    "properties": {
+      "price": 819000,
+      "bedrooms": 5,
+      "bathrooms": 4,
+      "address": {
+        "street": "567 Alfver Blvd",
+        "city": "Calgary",
+        "province": "Alberta",
+        "postal": "T4C 4M2",
+        "country": "Canada"
+      }
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-114.195911, 51.142048]
+    },
+    "properties": {
+      "price": 449000,
+      "bedrooms": 3,
+      "bathrooms": 4,
+      "address": {
+        "street": "8776 Mcgiver Ave",
+        "city": "Calgary",
+        "province": "Alberta",
+        "postal": "T4C 9J7",
+        "country": "Canada"
+      }
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-114.182145, 51.141164]
+    },
+    "properties": {
+      "price": 489000,
+      "bedrooms": 3,
+      "bathrooms": 3,
+      "address": {
+        "street": "56 Jean Louis St NW",
+        "city": "Calgary",
+        "province": "Alberta",
+        "postal": "T4C 6F5",
+        "country": "Canada"
+      }
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-114.191818, 51.13254]
+    },
+    "properties": {
+      "price": 499000,
+      "bedrooms": 3,
+      "bathrooms": 3,
+      "address": {
+        "street": "344 Patrice Lane",
+        "city": "Calgary",
+        "province": "Alberta",
+        "postal": "T4C 5B5",
+        "country": "Canada"
+      }
+    }
+  }
+]

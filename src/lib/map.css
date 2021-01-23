@@ -1,0 +1,29 @@
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+  background-color: rgb(135, 140, 146);
+}
+
+.popup-container {
+  font-size: 14px;
+  font-family: "Helvetica", sans-serif;
+  background-color: rgb(135, 140, 146);
+}
+
+.popup-header {
+  font-size: 1.2em;
+  margin-bottom: 0.4em;
+}
+
+.popup-container ul {
+  padding: 0;
+  list-style: none;
+  margin: 0;
+}
+
+.popup-container li {
+  margin-bottom: 0.4em;
+}
+
+.popup-container li:last-child {
+  margin-bottom: 0;
+}

@@ -74,6 +74,7 @@ module.exports = {
     },
     `gatsby-theme-catalyst-header-top`, // Try `gatsby-theme-catalyst-header-side`
     `gatsby-theme-catalyst-footer`,
+    `gatsby-plugin-react-leaflet`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
