@@ -4,17 +4,21 @@ import MarkerClusterGroup from "react-leaflet-markercluster"
 import { useHasMounted } from "gatsby-theme-catalyst-core"
 import { makeKey } from "../lib/makeKey"
 import geojson from "../data/geojson.json"
-import Logic from "../components/logic"
 import "react-leaflet-markercluster/dist/styles.min.css"
 import "../lib/map.css"
 import L from "leaflet"
+import { Helmet } from "react-helmet"
+import AddLocate from "../lib/add-locate"
+import GetVisibleMarkers from "../lib/get-visible-markers"
+import UpdateMapPosition from "../lib/update-map-position"
 
 const Map = () => {
-  // Initiate map ref
+  // REFS
+  // Initiate refs to the feature group and cluster group
   const groupRef = useRef()
   const clusterRef = useRef()
 
-  // Application State
+  // STATE
   // GeoJson Key to handle updating geojson inside react-leaflet
   const [geoJsonKey, setGeoJsonKey] = useState("initialKey123abc")
 
@@ -24,12 +28,50 @@ const Map = () => {
   //Track which markers are visible on the map
   const [visibleMarkers, setVisibleMarkers] = useState(geojson)
 
+  // FUNCTIONS
   // Generate a new key to force an update to GeoJson Layer
   useEffect(() => {
     const newKey = makeKey(10)
     setGeoJsonKey(newKey)
   }, [displayedMarkers])
 
+  //Creating popups for the map
+  const createPopups = (feature = {}, layer) => {
+    const { properties = {} } = feature
+    const { address, price, bedrooms, bathrooms } = properties
+    const popup = L.popup()
+    const html = `
+     <div class="popup-container">
+     <h3 class="popup-header">${address.street}</h3>
+     <ul>
+     <li><strong>Price:</strong> ${price.toString()}</li>
+     <li><strong>Bedrooms:</strong> ${bedrooms.toString()}</li>
+     <li><strong>Bathrooms:</strong>${bathrooms.toString()}</li>
+     </div>
+     `
+    popup.setContent(html)
+    layer.bindPopup(popup)
+  }
+
+  // Handle creation of clusters and change styles
+  const createClusters = (cluster) => {
+    const childCount = cluster.getChildCount()
+    let size = ""
+    if (childCount < 10) {
+      size = "small"
+    } else if (childCount < 25) {
+      size = "medium"
+    } else {
+      size = "large"
+    }
+    return L.divIcon({
+      html: `<div><span><b>${childCount}</b></span></div>`,
+      className: `custom-marker-cluster custom-marker-cluster-${size}`,
+      iconSize: new L.point(40, 40),
+    })
+  }
+
+  // NOT RELEVANT - just some quick button functions
   // Remove a displayed marker to simulate filtering
   const handleRemove = () => {
     if (displayedMarkers.length > 0) {
@@ -53,26 +95,15 @@ const Map = () => {
     setDisplayedMarkers(geojson)
   }
 
-  //Creating popups for the map
-  const createPopups = (feature = {}, layer) => {
-    const { properties = {} } = feature
-    const { address, price, bedrooms, bathrooms } = properties
-    const popup = L.popup()
-    const html = `
-     <div class="popup-container">
-     <h3 class="popup-header">${address.street}</h3>
-     <ul>
-     <li><strong>Price:</strong> ${price.toString()}</li>
-     <li><strong>Bedrooms:</strong> ${bedrooms.toString()}</li>
-     <li><strong>Bathrooms:</strong>${bathrooms.toString()}</li>
-     </div>
-     `
-    popup.setContent(html)
-    layer.bindPopup(popup)
-  }
-
   return (
     <>
+      <Helmet>
+        {/* This is required for the Add Locate functionality but it is better to include you own style sheet instead of FA*/}
+        <link
+          rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+      </Helmet>
       <header>
         <h1>Advanced mapping with Gatsby and React-Leaflet</h1>
       </header>
@@ -95,23 +126,30 @@ const Map = () => {
                   attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                   url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
-                <Logic
+                <FeatureGroup ref={groupRef} name="Homes">
+                  <MarkerClusterGroup
+                    ref={clusterRef}
+                    iconCreateFunction={createClusters}
+                  >
+                    <GeoJSON
+                      data={displayedMarkers}
+                      key={geoJsonKey}
+                      onEachFeature={createPopups}
+                    />
+                  </MarkerClusterGroup>
+                </FeatureGroup>
+                <UpdateMapPosition
+                  geoJsonKey={geoJsonKey}
+                  groupRef={groupRef}
+                  displayedMarkers={displayedMarkers}
+                />
+                <GetVisibleMarkers
                   geoJsonKey={geoJsonKey}
                   groupRef={groupRef}
                   clusterRef={clusterRef}
-                  displayedMarkers={displayedMarkers}
                   setVisibleMarkers={setVisibleMarkers}
-                >
-                  <FeatureGroup ref={groupRef} name="Homes">
-                    <MarkerClusterGroup ref={clusterRef}>
-                      <GeoJSON
-                        data={displayedMarkers}
-                        key={geoJsonKey}
-                        onEachFeature={createPopups}
-                      />
-                    </MarkerClusterGroup>
-                  </FeatureGroup>
-                </Logic>
+                />
+                <AddLocate />
               </MapContainer>
             )}
           </div>

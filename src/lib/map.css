@@ -1,3 +1,11 @@
+:root {
+  --custom-cluster-text: #ffffff;
+  --custom-cluster-bg-1: rgba(25, 25, 112, 0.6);
+  --custom-cluster-bg-2: rgba(18, 18, 83, 0.6);
+  --custom-cluster-hover: #f012be;
+}
+
+/* POPUPS */
 .leaflet-popup-content-wrapper,
 .leaflet-popup-tip {
   background-color: rgb(135, 140, 146);
@@ -26,4 +34,81 @@
 
 .popup-container li:last-child {
   margin-bottom: 0;
+}
+
+/* MARKER CLUSTERS */
+.custom-marker-cluster-single {
+  background-color: var(--custom-cluster-bg-1, rgba(25, 25, 112, 0.6));
+}
+.custom-marker-cluster-single div {
+  background-color: var(--custom-cluster-bg-2, rgba(18, 18, 83, 0.6));
+}
+
+.custom-marker-cluster-small {
+  background-color: var(--custom-cluster-bg-1, rgba(25, 25, 112, 0.6));
+}
+.custom-marker-cluster-small div {
+  background-color: var(--custom-cluster-bg-2, rgba(18, 18, 83, 0.6));
+}
+
+.custom-marker-cluster-medium {
+  background-color: var(--custom-cluster-bg-1, rgba(25, 25, 112, 0.6));
+}
+.custom-marker-cluster-medium div {
+  background-color: var(--custom-cluster-bg-2, rgba(18, 18, 83, 0.6));
+}
+
+.custom-marker-cluster-large {
+  background-color: var(--custom-cluster-bg-1, rgba(25, 25, 112, 0.6));
+}
+.custom-marker-cluster-large div {
+  background-color: var(--custom-cluster-bg-2, rgba(18, 18, 83, 0.6));
+}
+
+/* IE 6-8 fallback colors */
+.leaflet-oldie .custom-marker-cluster-small {
+  background-color: rgb(25, 25, 112);
+}
+.leaflet-oldie .custom-marker-cluster-small div {
+  background-color: rgb(18, 18, 83);
+}
+
+.leaflet-oldie .custom-marker-cluster-medium {
+  background-color: rgb(25, 25, 112);
+}
+.leaflet-oldie .custom-marker-cluster-medium div {
+  background-color: rgb(18, 18, 83);
+}
+
+.leaflet-oldie .custom-marker-cluster-large {
+  background-color: rgb(25, 25, 112);
+}
+.leaflet-oldie .custom-marker-cluster-large div {
+  background-color: rgb(18, 18, 83);
+}
+
+.custom-marker-cluster {
+  background-clip: padding-box;
+  border-radius: 20px;
+  transition: all 0.3s;
+}
+
+.custom-marker-cluster:active,
+.custom-marker-cluster:focus,
+.custom-marker-cluster:hover {
+  background-color: var(--custom-cluster-hover, #f012be);
+}
+
+.custom-marker-cluster div {
+  width: 30px;
+  height: 30px;
+  margin-left: 5px;
+  margin-top: 5px;
+  text-align: center;
+  border-radius: 15px;
+  font: 14px "Helvetica Neue", Arial, Helvetica, sans-serif;
+  color: var(--custom-cluster-text, #ffffff);
+}
+.custom-marker-cluster span {
+  line-height: 30px;
 }
