@@ -112,3 +112,59 @@
 .custom-marker-cluster span {
   line-height: 30px;
 }
+
+/* BONUS CODE FOR CUSTOMIZING THE LOCATE ICON
+Unfotunately I found !Important was necessary because of some weird CSS specificity errors I was running into during testing. You may need to adapt this code for your own use.
+
+.custom-locate-icon {
+  background-image: url(./locate-icon.svg) !important;
+  width: 30px !important;
+  height: 30px !important;
+  display: block !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+.custom-locate-icon:hover,
+.custom-locate-icon:active,
+.custom-locate-icon:focus {
+  background-color: var(--custom-map-control-hover, #dddddd) !important;
+}
+
+.custom-locate-icon-loading {
+  background-image: url(./locate-icon-loading.svg) !important;
+  width: 30px !important;
+  height: 30px !important;
+  display: block !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+
+.leaflet-control-locate a {
+  font-size: 1.4em;
+  color: #444;
+  cursor: pointer;
+}
+.leaflet-control-locate.active a {
+  color: #2074b6;
+}
+.leaflet-control-locate.active.following a {
+  color: #fc8428;
+}
+
+.leaflet-control-locate-location circle {
+  animation: leaflet-control-locate-throb 4s ease infinite;
+}
+
+@keyframes leaflet-control-locate-throb {
+  0% {
+    stroke-width: 1;
+  }
+  50% {
+    stroke-width: 3;
+    transform: scale(0.8, 0.8);
+  }
+  100% {
+    stroke-width: 1;
+  }
+}
+ */
